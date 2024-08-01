@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="5602e6a1-ab62-43c1-b3a3-7c99b5215430" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="testFlow" doc:id="5d7fe2f3-f337-4cea-b496-6d0faf003286" >
+		<http:listener doc:name="Listener" doc:id="587f08dc-9111-4b33-8c2a-724bb4fc7481" config-ref="HTTP_Listener_config" path="/jenkins"/>
+		<set-payload value='#[respone: "deploy the app"]' doc:name="Set Payload" doc:id="47cdb098-6d9b-43ab-bd38-9ae119f9a1d8" />
+		<logger level="INFO" doc:name="Logger" doc:id="a4376726-320c-4447-9af9-7d353c11ffd9" message="###test flow ###"/>
+	</flow>
+</mule>
