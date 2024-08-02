@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="282065b9-d890-49f5-b956-e05e8fd0326c" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="demo-jenkinsFlow" doc:id="5d68928f-61ae-450b-9770-d5f8b1015f21" >
+		<http:listener doc:name="Listener" doc:id="0ad15e13-193e-4bae-98dd-9ce1c80f2c9e" config-ref="HTTP_Listener_config" path="/jenkins"/>
+		<logger level="INFO" doc:name="Logger" doc:id="a99ff16a-00a9-4b87-8d41-fecbc3d5fb31" message="####demo_flow start####"/>
+		<set-payload value='#["message": "jenkins is open source automation server"]' doc:name="Set Payload" doc:id="85dfb96d-34a8-4d19-a75e-ec7063212d4e" />
+		<logger level="INFO" doc:name="Logger" doc:id="93041d63-7cee-4421-8d1a-a451a3e56b00" message="####demo_flow End####" />
+	</flow>
+</mule>
